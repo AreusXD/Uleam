@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - El Rincón de los Dulces</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>El Rincón de los Dulces</h1>
+        <nav>
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="facturacion.html">Facturación</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="ar.html">Ar</a></li>
+                <li><a href="realidad_virtual.html">Vr</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Productos</h2>
+        <div class="productos">
+            <div class="producto">
+                <img src="https://i0.wp.com/www.comblanc.international/wp-content/uploads/2024/02/DELINUT-NAPOLITANO-DISPLAY_Mesa-de-trabajo-1.png?resize=1170%2C947&ssl=1" alt="Dulce 1">
+                <h3>Delinut Napolitano</h3>
+                <p>La crema de leche y chocolate te hace alegre y divertido.</p>
+                <p>Precio: $15.50</p>
+                <button onclick="addToCart('Delinut Napolitano', 15.50)">Añadir al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="https://i0.wp.com/www.comblanc.international/wp-content/uploads/2024/02/DUCREM-ALGODON-DE-AZUCAR.png?resize=1170%2C1081&ssl=1" alt="Dulce 2">
+                <h3>Ducrem Algodão Doce</h3>
+                <p>Crema sabor Algodón de Azúcar y Fresa.</p>
+                <p>Precio: $17.00</p>
+                <button onclick="addToCart('Ducrem Algodão Doce', 17.00)">Añadir al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="https://images.tcdn.com.br/img/img_prod/914374/tetop_morango_display_12_unidades_168g_489_1_6e4b2b97e63d30e062f0b4a9008d40e8.png" alt="Dulce 3">
+                <h3>TETOP FRESA</h3>
+                <p>Postre de gelatina sabor fresa con capa de barquillo y cobertura sabor chocolate.</p>
+                <p>Precio: $12.00</p>
+                <button onclick="addToCart('TETOP FRESA', 12.00)">Añadir al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="https://images.tcdn.com.br/img/img_prod/914374/coloreti_unicornio_sortido_300g_475_1_d125ff51f02b9ad7c4b5a265422625bb.png" alt="Dulce 4">
+                <h3>COLORETTI MIXTO UNICORNIO</h3>
+                <p>Pastelitos decorados y coloridos con un delicioso sabor a Chocolate, crujientes por fuera y suaves por dentro.</p>
+                <p>Precio: $8.50</p>
+                <button onclick="addToCart('COLORETTI MIXTO UNICORNIO', 8.50)">Añadir al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="https://images.tcdn.com.br/img/img_prod/914374/chocomais_top_meio_amargo_barra_1_01kg_445_1_7a614c7c377716a63a8f8e9cc9b0429c.png" alt="Dulce 5">
+                <h3>BARRA MITAD AMARGA DE CHOCOMAIS</h3>
+                <p>Cobertura fraccionada Sabor Chocolate Semiamargo.</p>
+                <p>Precio: $28.00</p>
+                <button onclick="addToCart('BARRA MITAD AMARGA DE CHOCOMAIS', 28.00)">Añadir al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="https://images.tcdn.com.br/img/img_prod/914374/coloreti_display_36x11g_83_1_37a07e4ea6c4d3fe7881d58e9042b244.png" alt="Dulce 6">
+                <h3>DISPLAY COLORETI</h3>
+                <p>Pastillas elaboradas con un delicioso sabor a Chocolate, crujientes por fuera y suaves por dentro.</p>
+                <p>Precio: $19.00</p>
+                <button onclick="addToCart('DISPLAY COLORETI', 19.00)">Añadir al carrito</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        function addToCart(product, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ product, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Producto añadido al carrito');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dulces en Realidad Aumentada</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;">
+    
+    <a-assets>
+      <video id="video" autoplay></video>
+    </a-assets>
+    <a-videosphere src="#video" rotation="0 180 0"></a-videosphere>
+
+
+    <a-sphere position="5 5 0" radius="2" color="#FF0000"></a-sphere>
+    <a-sphere position="3 4 -2" radius="2.5" color="#00FF00"></a-sphere>
+    <a-sphere position="-4 3 -3" radius="3" color="#0000FF"></a-sphere>
+    <a-sphere position="7 -3 -1" radius="2.2" color="#FFFF00"></a-sphere>
+    <a-sphere position="-5 8 -4" radius="1.8" color="#FF00FF"></a-sphere>
+    <a-sphere position="6 -7 1" radius="2.5" color="#00FFFF"></a-sphere>
+    <a-sphere position="4 9 -2" radius="2.3" color="#FFA500"></a-sphere>
+    <a-sphere position="-6 2 -3" radius="2.6" color="#800080"></a-sphere>
+    <a-sphere position="8 -4 -4" radius="2.1" color="#008000"></a-sphere>
+    <a-sphere position="-8 5 3" radius="3.2" color="#000080"></a-sphere>
+    <a-sphere position="5 6 -5" radius="1.9" color="#FFC0CB"></a-sphere>
+    <a-sphere position="-7 -3 4" radius="2.4" color="#00CED1"></a-sphere>
+    <a-sphere position="9 -1 -6" radius="3" color="#FFD700"></a-sphere>
+    <a-sphere position="-9 3 1" radius="2.5" color="#ADFF2F"></a-sphere>
+    <a-sphere position="11 7 -2" radius="2.7" color="#8A2BE2"></a-sphere>
+    <a-sphere position="-10 -5 2" radius="2.9" color="#5F9EA0"></a-sphere>
+    <a-sphere position="12 -6 -3" radius="3.1" color="#7FFF00"></a-sphere>
+    <a-sphere position="-11 4 -4" radius="3.3" color="#D2691E"></a-sphere>
+    <a-sphere position="13 0 5" radius="2.2" color="#FF4500"></a-sphere>
+    <a-sphere position="-12 1 -5" radius="2.8" color="#DA70D6"></a-sphere>
+    <a-sphere position="10 -2 6" radius="2.6" color="#40E0D0"></a-sphere>
+    <a-sphere position="-13 6 -1" radius="2.4" color="#A52A2A"></a-sphere>
+    <a-sphere position="14 -3 -4" radius="3.2" color="#00008B"></a-sphere>
+    <a-sphere position="-14 5 2" radius="2.7" color="#FF1493"></a-sphere>
+
+    
+    <a-camera-static position="0 0 0"></a-camera-static>
+  </a-scene>
+
+  
+  <button id="switchCameraButton" style="position: absolute; top: 10px; left: 10px; z-index: 1000;">Cambiar Cámara</button>
+
+  <script>
+    let currentStream;
+    let currentFacingMode = 'environment';
+
+    async function switchCamera() {
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+      }
+
+      currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+
+      const constraints = {
+        video: {
+          facingMode: {
+            exact: currentFacingMode
+          }
+        }
+      };
+
+      try {
+        currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+        const video = document.querySelector('#video');
+        video.srcObject = currentStream;
+        video.play();
+      } catch (error) {
+        console.error('Error accessing the camera: ', error);
+      }
+    }
+
+    document.getElementById('switchCameraButton').addEventListener('click', switchCamera);
+
+    // Inicializar la cámara con la cámara trasera por defecto
+    switchCamera();
+  </script>
+</body>
+</html>

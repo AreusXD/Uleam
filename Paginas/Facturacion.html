@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación - El Rincón de los Dulces</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>El Rincón de los Dulces</h1>
+        <nav>
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="facturacion.html">Facturación</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="ar.html">Ar</a></li>
+                <li><a href="realidad_virtual.html">Vr</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Carrito de Compras</h2>
+        <div id="cart">
+            <!-- Aquí se mostrarán los productos del carrito -->
+        </div>
+        <h2>Facturación</h2>
+        <form id="billing-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+            <button type="submit">Facturar</button>
+        </form>
+    </main>
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartDiv = document.getElementById('cart');
+            cartDiv.innerHTML = '';
+            if (cart.length === 0) {
+                cartDiv.innerHTML = '<p>El carrito está vacío</p>';
+                return;
+            }
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+                cartDiv.innerHTML += `<p>${item.product} - $${item.price.toFixed(2)}</p>`;
+            });
+            cartDiv.innerHTML += `<p>Total: $${total.toFixed(2)}</p>`;
+        }
+
+        document.getElementById('billing-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            localStorage.removeItem('cart');
+            alert('Compra realizada con éxito');
+            window.location.href = 'inicio.html'; // Redirigir a la página de inicio
+        });
+
+        loadCart();
+    </script>
+</body>
+</html>
