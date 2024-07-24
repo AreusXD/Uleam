@@ -1,10 +1,10 @@
-/* Estilos generales */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background: url('../Recurso/2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: black;
 }
 
 header {
@@ -135,7 +135,7 @@ form button:hover {
     margin: 100px auto;
     padding: 30px;
     border: 1px solid #ddd;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -163,6 +163,64 @@ form button:hover {
 
 .login-container button:hover {
     background-color: #B22222;
+}
+
+/* Estilos específicos para el registro */
+.register-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.register-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.register-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.register-container button:hover {
+    background-color: #B22222;
+}
+
+/* Estilo para el nuevo div */
+.id {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: slideIn 1.5s ease-in-out;
+}
+.ide {
+    border-radius: 4px;
+    margin-top: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1.5s ease-in-out;
+    margin: 0;
+    padding: 10px;
+    background-color: #8B0000;
+    color: white;
+    font-size: 1.2em;
 }
 
 /* Animaciones */
